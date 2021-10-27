@@ -9,8 +9,14 @@
 					   tlf_paciente varchar(10) not null,
 					   primary key (ci_paciente)
 					  );
+					  
+					  
+/*agregar otra columna*/			
  alter table paciente add provincia varchar (20) not null;
+ /*cambiar de nombre*/
  alter table paciente rename column provincia to ciudad;
+ 
+ 
 
  create table medico(ci_medico varchar(10) not null,
 					   nombre_medico varchar(10) not null,
@@ -19,7 +25,23 @@
 					   tlf_medico varchar(10) not null,
 					   primary key (ci_medico)
 					  );
-					  
+
+/* Insertar datos en tabla medico*/
+/*metodo corto*/
+insert into medico values ('1721901302','Juan','Perez','Pediatra','0999841214');
+/*metodo largo*/
+insert into medico (ci_medico,nombre_medico,apellido_medico, especialidad, tlf_medico) values ('1721901303','Pedro','Castillo','pediatra','0987654321');
+select * from medico;
+/*metodo masivo*/
+insert into medico values ('17788714'|| generate_series(1,9), 
+						  'Juan' || generate_series(1,9), 
+						   'Perez' || generate_series(1,9), 
+						   'Pediatra'|| generate_series(1,9), 
+						   '099984121'|| generate_series(1,9)
+						  );
+	
+	
+	
   create table especialidad(id_especialidad varchar(10) not null,
 							nombre varchar(10) not null,
 							primary key (id_especialidad)
